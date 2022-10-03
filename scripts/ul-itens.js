@@ -1,5 +1,4 @@
 let soma = 0
-
 let currentView = []
 
 function insertValue () {
@@ -20,8 +19,12 @@ function insertValue () {
         if (exitsModal.classList.contains("button-active")){
             value = exitsModal.value
         }
+        let count = 0
+        insertedValues.forEach((element) => {
+            count = element.id
+        })
         let object = {
-            id: insertedValues.length +1,
+            id: count+1,
             value: Number(valueInput),
             categoryID: Number(value),
         }
@@ -32,7 +35,8 @@ function insertValue () {
             return undefined
         }else if (object.categoryID >= 1 && object.id >= 0 && object.value > 0){
             insertedValues.push(object)
-            all.style.display = "none"   
+            all.style.display = "none" 
+            console.log(insertedValues)  
         }
         createElements(insertedValues)
         entrysModal.classList.remove("button-active")
@@ -73,7 +77,6 @@ function createElements (list) {
         button.addEventListener("click", () => {
             // li.innerHTML = ""
             let i = insertedValues.indexOf(element)
-
             insertedValues.splice(i, 1)
             if(currentView.length === 0){
                 createElements(insertedValues)
@@ -125,6 +128,7 @@ function clickButtonAll() {
         }else{
             all.style.display = "flex"
         }
+        console.log(insertedValues) 
     })
 }   
 clickButtonAll()
