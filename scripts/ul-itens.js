@@ -35,8 +35,7 @@ function insertValue () {
             return undefined
         }else if (object.categoryID >= 1 && object.id >= 0 && object.value > 0){
             insertedValues.push(object)
-            all.style.display = "none" 
-            console.log(insertedValues)  
+            all.style.display = "none"  
         }
         createElements(insertedValues)
         entrysModal.classList.remove("button-active")
@@ -128,7 +127,6 @@ function clickButtonAll() {
         }else{
             all.style.display = "flex"
         }
-        console.log(insertedValues) 
     })
 }   
 clickButtonAll()
