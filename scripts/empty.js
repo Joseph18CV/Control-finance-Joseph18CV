@@ -22,4 +22,5 @@ buttonExits.addEventListener("click", function() {
     buttonAll.classList.remove("button-active")
     buttonEntrys.classList.remove("button-active")
     buttonExits.classList.add("button-active")
+    
 })
