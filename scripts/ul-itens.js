@@ -170,6 +170,7 @@ function clickButtonExit(){
 clickButtonExit()
 
 function sumValuesItems (list) {
+    
     let sumItems = document.querySelector(".count-values")
     if (list.length == 0){
         sumItems.innerText = `R$ ${0},00`
