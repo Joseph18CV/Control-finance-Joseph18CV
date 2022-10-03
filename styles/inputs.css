@@ -1,0 +1,23 @@
+.input-insert-value {
+    height: 44px;
+    background-color: var(--fixed-white);
+    border: 1.5px solid var(--color-grey-3);
+    border-radius: var(--radius-1);
+
+    font-family: var(--font-family-1);
+    font-style: normal;
+    font-weight: var(--font-weight-3);
+    font-size: var(--font-size-3);
+    line-height: 150%;
+    color: var(--color-grey-2);
+    padding-left: 40px;
+    outline: none;
+}
+
+.input-insert-value::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.input-border {
+    border: 1.5px solid var(--color-brand-1);
+}

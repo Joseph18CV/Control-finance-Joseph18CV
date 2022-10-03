@@ -7,13 +7,78 @@
     <title>Control Finance</title>
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
     <meta name="description" content="Control Finance - Seu controle financeiro">
-    <link rel="stylesheet" href="/styles/globalStyles.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="../../styles/globalStyles.css">
+    <link rel="stylesheet" href="../home/header.css" >
+    <link rel="stylesheet" href="../../styles/buttons.css">
+    <link rel="stylesheet" href="../home/main.css">
+    <link rel="stylesheet" href="../home/section-title.css">
+    <link rel="stylesheet" href="../home/section-sum-values.css">
+    <link rel="stylesheet" href="../../styles/empty.css">
+    <link rel="stylesheet" href="../../styles/modal.css">
+    <link rel="stylesheet" href="../../styles/inputs.css">
+    <link rel="stylesheet" href="../home/ul.css">
+    <link rel="stylesheet" href="../../styles/media.css">
+    
 </head>
 <body>
-    <main id="app"></main>
-    <script src="/scripts/modal.js"></script>
-    <script src="valuesData.js"></script>
-    <script src="index.js"></script>
+    <header class="header">
+        <div class="div-header">
+            <h1><span>Control</span>Finance</h1>
+            <button data-modal="insert-value" class="add-new-value">Registrar novo valor</button>
+        </div>
+    </header>
+    <main id="app" class="container">
+        <section class="financial-summary">
+            <h2>Resumo Financeiro</h2>
+            <div class="buttons-all-entrys-exits">
+                <button class="nav-buttons" id="all">Todos</button>
+                <button class="nav-buttons" id="entrys">Entradas</button>
+                <button class="nav-buttons" id="exits">Saídas</button>
+            </div>
+        </section>
+        <section class="sum-values">
+            <h2>Soma dos Valores</h2>
+            <span class="count-values">R$ 0</span>
+        </section>
+        <div class="empty" id="empty-all">
+            <h2>Nenhum valor cadastrado</h2>
+            <p>Registrar novo valor</p>
+        </div>
+        <ul class="list-items" id="all-items">
+            <!-- LI ITEMS DOM -->
+        </ul>
+        <div class="modal-wrapper" id="insert-value">
+            <form class="modal">
+                <div class="modal-header">
+                    <h2>Registro de valor</h2>
+                    <button type="button" data-modal="insert-value" class="modal-close">X</button>
+                </div>
+                <div class="modal-text">
+                    <p>Digite o valor e em seguida aperte no botão referente ao tipo de valor</p>
+                    <div class="div-input">
+                        <label>Valor</label>
+                        <span class="RS">R$</span>
+                        <input class="input-insert-value" type="number" placeholder="00,00">
+                    </div>
+                    <div class="type-value">
+                        <span>Tipo de valor</span>
+                        <button type="button" value= 1 class="nav-buttons" id="entrys-modal">Entrada</button>
+                        <button type="button" value= 2 class="nav-buttons" id="exits-modal">Saída</button>
+                    </div>
+                    <div class="cancel-insert-value">
+                        <div>
+                            <button type="button" class="cancel" data-modal="insert-value">Cancelar</button>
+                            <button type="reset" class="insert-value-modal" data-modal="insert-value"  >Inserir valor</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script src="https://kit.fontawesome.com/fe46c5b09a.js" crossorigin="anonymous"></script>
+    <script src="../../scripts/modal.js"></script>
+    <script src="../home/valuesData.js"></script>
+    <script src="../../scripts/empty.js"></script>
+    <script src="../../scripts/ul-itens.js"></script>
 </body>
 </html>
