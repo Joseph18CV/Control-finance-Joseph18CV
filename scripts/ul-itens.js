@@ -1,5 +1,7 @@
 let soma = 0
 
+let currentView = []
+
 function insertValue () {
     const buttonInsertValueModal = document.querySelector(".insert-value-modal")
     buttonInsertValueModal.addEventListener("click", () => {
@@ -69,16 +71,27 @@ function createElements (list) {
     let button = document.createElement("button")
         button.classList.add("trash")
         button.addEventListener("click", () => {
-            li.innerHTML = ""
-            let i = list.indexOf(element)
+            // li.innerHTML = ""
+            let i = insertedValues.indexOf(element)
 
-            list.splice(i, 1)
-            li.remove()
-            if(insertedValues.length == []){
-                all.style.display = "flex"
+            insertedValues.splice(i, 1)
+            if(currentView.length === 0){
+                createElements(insertedValues)
+                sumValuesItems(insertedValues)
+                if(insertedValues.length === 0){
+                    all.style.display = "flex"
+                }
+                return
             }
-            
-            
+            if(currentView !== []){
+                let i2 = currentView.indexOf(element)
+                currentView.splice(i2, 1)
+                createElements(currentView)
+                sumValuesItems(currentView)
+                if(currentView.length === 0){
+                    all.style.display = "flex"
+                }
+            } 
         })
     let trashItem = document.createElement("i")
         trashItem.classList.add("fa-solid")
@@ -96,7 +109,7 @@ function createElements (list) {
     ul.appendChild(li)
     })
 
-    sumValuesItems()
+    sumValuesItems(insertedValues)
 }
 createElements(insertedValues)
 
@@ -104,7 +117,14 @@ function clickButtonAll() {
     const li = document.querySelectorAll(".items")
     buttonAll.addEventListener("click", function(){
         li.innerHTML = ""
+        sumValuesItems(insertedValues)
         createElements(insertedValues)
+        currentView = []
+        if(insertedValues.length !== 0){
+            all.style.display = "none"
+        }else{
+            all.style.display = "flex"
+        }
     })
 }   
 clickButtonAll()
@@ -117,6 +137,13 @@ function clickButtonEntrys() {
             return elements.categoryID === 1
         })
         createElements(entrys)
+        currentView = [...entrys]
+        sumValuesItems(currentView)
+        if(currentView.length !== 0){
+            all.style.display = "none"
+        }else{
+            all.style.display = "flex"
+        }
     })
 }   
 clickButtonEntrys()
@@ -129,15 +156,25 @@ function clickButtonExit(){
             return elements.categoryID === 2
         })
         createElements(exits)
+        currentView = [...exits]
+        sumValuesItems(currentView)
+        if(currentView.length !== 0){
+            all.style.display = "none"
+        }else{
+            all.style.display = "flex"
+        }
     })
 }
 clickButtonExit()
 
-function sumValuesItems () {
+function sumValuesItems (list) {
     let sumItems = document.querySelector(".count-values")
-
-    let sumValues = insertedValues.reduce((value1, value2) => {
-        return value1.value + value2.value || value1 + value2.value
+    if (list.length == 0){
+        sumItems.innerText = `R$ ${0},00`
+    }else{
+    let sumValues = list.reduce((value1, value2) => {
+        return value1 + value2.value 
     },0)
     sumItems.innerText = `R$ ${sumValues},00`
+    }
 }
